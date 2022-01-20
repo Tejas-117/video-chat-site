@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video Conference</title>
+    <link rel="icon" href="/images/favicon.png" sizes="any" type="image/png">
+
+    <link rel="stylesheet" href="/css/index.css" />
+    <script defer src="/js/index.js"></script>
+
+    <!-- bootstrap cdn -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    
+    <nav class="navbar d-flex justify-content-center">
+      <div class="p-2">
+        <span class="navbar-brand mb-0 h1">Video Conference</span>
+      </div>
+    </nav>
+    
+    <main class="d-flex flex-column align-items-center col-md-6">
+      <form>
+      <div class="my-3">
+        <label for="name" class="form-label text-white">Name :</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Enter your name"
+            required
+            onblur="setName(event)"
+          />
+      </div>
+      </form>
+
+      <!-- show forms -->
+      <p class="form-toggle">
+        <button class="btn btn-primary mx-2" type="button"  data-name="create" data-bs-toggle="collapse" href="#form-one" aria-expanded="false" aria-controls="form-one" >
+          Create Room
+        </button>
+        <button class="btn btn-primary" type="button" data-name="join" data-bs-toggle="collapse" data-bs-target="#form-two" aria-expanded="false" aria-controls="form-two">
+          Join Room
+        </button>
+      </p>
+      <div class="collapse my-2" id="form-one">
+        <div class="card card-body">
+           <!-- create new room and join it -->
+          <form class="create room-form" action="/create-room" method="post">
+            <div class="my-3">
+              <label class="form-label">Room Name</label>
+              <input
+                type="text"
+                class="form-control"
+                name="name"
+                placeholder="Enter Room Name"
+                required
+                autocomplete="off"
+              />
+            </div>
+            <button class="submitBtn btn btn-md btn-success" disabled>
+              Create Room
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="collapse" id="form-two">
+        <div class="card card-body">
+            <!-- join room using url -->
+          <form class="join room-form" action="/join-room" method="post">
+            <div class="my-3">
+              <label class="form-label">Room Link</label>
+              <input
+                type="text"
+                class="form-control"
+                name="roomUrl"
+                placeholder="Enter Room Link"
+                required
+                autocomplete="off"
+              />
+            </div>
+            <button class="submitBtn btn btn-md btn-success" disabled>Join Room</button>
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

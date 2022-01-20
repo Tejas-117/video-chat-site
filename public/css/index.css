@@ -1,0 +1,41 @@
+html{
+  height: 100%;
+}
+
+body{
+  min-height: 100%;
+  margin-bottom: 2rem;
+  text-align: center;
+  padding-bottom: 1rem;
+  background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),url('/images/image1.webp');
+  background-position: center;
+  background-size: cover;
+  transition: background-image 1s linear;
+}
+
+.navbar {
+  background-color: rgb(173, 181, 189);
+}
+
+main {
+  width: 50vw;
+  left: 0;
+  right: 0;
+  margin: 2rem auto;
+}
+
+@media screen and (max-width: 500px) {
+  main {
+    width: 70vw;
+  }
+
+  .form-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .btn {
+    margin: 10px 0;
+  }
+}
