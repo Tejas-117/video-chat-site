@@ -108,11 +108,11 @@ p {
   border-radius: 5px;
 }
 
-.join {
+.green {
   background-color: rgba(135, 241, 135, 0.575);
 }
 
-.end {
+.red {
   background-color: rgb(240, 106, 106);
 }
 

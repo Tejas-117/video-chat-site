@@ -30,13 +30,19 @@ io.on("connection", (socket) => {
     io.in(roomId).emit("allUsers", room.getAllUsers(roomId)); // to update all users
     io.in(roomId).emit("call-user", id, name);
 
+    // send message to clients
     socket.to(roomId).emit("send-message", {
-      // send message to clients
       user: "BOT",
       message: `${name}, joined room.`,
       time: new Date().toLocaleTimeString("en-US"),
-      type: `dispatch join`,
+      type: `dispatch green`,
     });
+    socket.emit("send-message", {
+      user: "BOT",
+      message: `Welcome, ${name}`,
+      time: new Date().toLocaleTimeString("en-US"),
+      type: `dispatch green`,
+    })
 
     socket.on("disconnect", () => {
       room.removeUser(roomId, id);
@@ -47,7 +53,7 @@ io.on("connection", (socket) => {
         user: "BOT",
         message: `${name}, left room.`,
         time: new Date().toLocaleTimeString("en-US"),
-        type: `dispatch end`,
+        type: `dispatch red`,
       });
     });
 
