@@ -3,15 +3,12 @@ const socket = io("/");
 let name = localStorage.getItem("name");
 let id;
 
-if (!name) {
+while (!name) {
   name = prompt("Enter your name: ");
 }
 
-const peer = new Peer(undefined, {
-  path: "/peerjs",
-  host: "/",
-  port: "443",
-});
+// default configuration is sufficient
+const peer = new Peer();
 
 peer.on("open", (peerId) => {
   id = peerId;
